@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="NADHatWin.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NADHatWin"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:Convertisseurs="using:GlobalLIB.Convertisseurs"
+    mc:Ignorable="d"
+    d:DesignHeight="480"
+    d:DesignWidth="800" Loaded="Page_Loaded">
+  <Page.Resources>
+    <local:DateTimeOffsetToHorlogeConverter x:Key="DateTimeOffsetToHorlogeConverter"/>
+    <Convertisseurs:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+  </Page.Resources>
+
+  <Grid x:Name="MainPageGRD" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition/>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <Frame x:Name="MainFRM" Grid.ColumnSpan="3" Grid.Row="0"/>
+    <TextBlock x:Name="StatutTBK" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="8"/>
+    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1"  Margin="8">
+      <TextBlock VerticalAlignment="Center" Text="{Binding Maintenant, Converter={StaticResource DateTimeOffsetToHorlogeConverter}, FallbackValue=--/--/---- --:--, TargetNullValue=--/--/---- --:--}" Margin="8,0,8,0"/>
+      <Button x:Name="NTPSyncBTN" Click="NTPSyncBTN_Click">
+        <Image Source="Assets/NTPSync-32.png" Stretch="None" />
+      </Button>
+    </StackPanel>
+    <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal">
+      <Image Source="Assets/CarteSim.png" Visibility="{Binding SimDebloquee, Converter={StaticResource BoolToVisibilityConverter}}"/>
+      <Button x:Name="EteindreBTN" Margin="4" Click="EteindreBTN_Click">
+        <Image Source="Assets/Eteindre-32.png" Stretch="None" />
+      </Button>
+    </StackPanel>
+  </Grid>
+</Page>

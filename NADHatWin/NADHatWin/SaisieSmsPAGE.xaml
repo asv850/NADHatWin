@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="NADHatWin.SaisieSmsPAGE"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NADHatWin"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+  d:DesignHeight="480"
+    d:DesignWidth="800">
+
+  <Grid x:Name="MainGRD" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition/>
+      <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+    <Button x:Name="RetourBTN" Click="RetourBTN_Click">
+      <Image Source="Assets/Retour-32.png" Stretch="None"/>
+    </Button>
+    <TextBlock Grid.Column="1" Grid.ColumnSpan="2" Text="Saisir un nouveau SMS" Margin="30,0,0,0" FontSize="20" VerticalAlignment="Center"/>
+    <Button x:Name="EnvoyerSmsBTN" Grid.Column="3" Click="EnvoyerSmsBTN_Click">
+      <Image Stretch="None" Source="Assets/EnvoyerMessage-32.png"/>
+    </Button>
+
+    <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Text="Numéro :" VerticalAlignment="Center" TextAlignment="Right" Margin="8,0"/>
+    <TextBox Grid.Column="2" Grid.Row="1" InputScope="TelephoneNumber" Text="{Binding NumeroTelephone, Mode=TwoWay}" Margin="4"/>
+
+    <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Text="Texte :" TextAlignment="Right" Margin="8,0"/>
+    <TextBox Grid.Column="2" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Texte, Mode=TwoWay}" Margin="4" MaxLength="160"/>
+  </Grid>
+</Page>

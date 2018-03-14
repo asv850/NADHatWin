@@ -1,0 +1,19 @@
+﻿<ContentDialog
+    x:Class="NADHatLIB.CodePinDLG"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NADHatLIB"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Entrez le code PIN :"
+    PrimaryButtonText="OK"
+    SecondaryButtonText="Annuler"
+    RenderTransformOrigin="0.5,0.5">
+  <ContentDialog.RenderTransform>
+    <CompositeTransform TranslateY="-80"/>
+  </ContentDialog.RenderTransform>
+
+  <PasswordBox x:Name="CodePinPBX" FontSize="14"  VerticalAlignment="Top"/>
+
+</ContentDialog>
